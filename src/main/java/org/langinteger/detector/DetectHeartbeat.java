@@ -10,7 +10,6 @@ import org.langinteger.entity.Heartbeat;
 public class DetectHeartbeat {
 
   private static final int interval = 3000;
-
   private final int port;
   private final Consumer<String> timeoutConsumer;
   private Timer timer;
@@ -32,7 +31,7 @@ public class DetectHeartbeat {
     serverThread.start();
   }
 
-  public synchronized void receiveHeartbeat(String id) {
+  private synchronized void receiveHeartbeat(String id) {
     if (timer == null) {
       scheduleCheckTask(id);
     } else {
